@@ -1,0 +1,17 @@
+SimpleQueryTests/JoinEqualOuterJoin.class
+z3Test1.class
+SimpleQueryTests/tableSchema/BONUS.class
+SimpleQueryTests/tableSchema/EMP.class
+SimpleQueryTests/tableSchema/DEPT.class
+SimpleQueryTests/simpleExists.class
+SimpleQueryTests/simpleTest.class
+SimpleQueryTests/simpleAgg.class
+SimpleQueryTests/SimpleAnalysis.class
+SimpleQueryTests/tableSchema/ACCOUNT.class
+SimpleQueryTests/simpleJoin.class
+SimpleQueryTests/SimpleEmptyTable.class
+SimpleQueryTests/simpleFilter.class
+SimpleQueryTests/SingleAnalysis.class
+SimpleQueryTests/SimpleLeftOuterJoin.class
+SimpleQueryTests/simpleParser.class
+SimpleQueryTests/testOftest.class

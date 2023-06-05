@@ -19,8 +19,6 @@ public class JoinEqualOuterJoin {
         System.out.println("second one");
         System.out.println(algeExpr2);
         System.out.println(algeExpr.isEq(algeExpr2));
-        //SimpleQueryTests.simpleParser parser2 = new SimpleQueryTests.simpleParser();
-        //parser2.explain("SELECT * FROM EMP");
     }
 
 }

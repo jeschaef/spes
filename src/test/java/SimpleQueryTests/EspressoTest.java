@@ -10,7 +10,7 @@ import AlgeNode.AlgeNode;
 import AlgeNodeParser.AlgeNodeParserPair;
 import AlgeRule.AlgeRule;
 
-public class simpleTest {
+public class EspressoTest {
     public static void main(String[] args){
       String q1 = args[0];
       String q2 = args[1];
@@ -26,8 +26,8 @@ public class simpleTest {
         result.addProperty("reason","sql feature not support");
         return result;
       }
-      simpleParser parser = new simpleParser();
-      simpleParser parser2 = new simpleParser();
+      EspressoParser parser = new EspressoParser();
+      EspressoParser parser2 = new EspressoParser();
       RelNode logicPlan = null;
       RelNode logicPlan2 = null;
       try {
@@ -52,11 +52,7 @@ public class simpleTest {
         return result;
       }
       try {
-        if (algeExpr.isEq(algeExpr2)) {
-          result.addProperty("decision","true");
-        } else {
-          result.addProperty("decision","false");
-        }
+        result.addProperty("decision", String.valueOf(algeExpr.isEq(algeExpr2)));
         result.addProperty("plan1",RelOptUtil.toString(logicPlan));
         result.addProperty("plan2",RelOptUtil.toString(logicPlan2));
       }catch (Exception e){
@@ -77,4 +73,3 @@ public class simpleTest {
       return false;
     }
 }
-

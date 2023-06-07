@@ -14,12 +14,12 @@ public class EspressoTest {
     public static void main(String[] args){
       String q1 = args[0];
       String q2 = args[1];
-      JsonObject result = verify(q1,q2);
-      System.out.println(result);
+      String schema = args[2];
+      System.out.println(verify(q1, q2, schema));
     }
 
 
-    public static JsonObject verify(String sql1, String sql2){
+    public static JsonObject verify(String sql1, String sql2, String schema){
       JsonObject result = new JsonObject();
       if((contains(sql1))|| (contains(sql2))) {
         result.addProperty("decision","unknown");

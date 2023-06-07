@@ -21,38 +21,34 @@ import SimpleQueryTests.tableSchema.EMP;
 import java.lang.reflect.Type;
 
 public class EspressoParser {
-        public static final JavaTypeFactory typeFactory = new JavaTypeFactoryImpl(RelDataTypeSystem.DEFAULT);
-        public static final SchemaPlus defaultSchema = Frameworks.createRootSchema(true);
+    public static final JavaTypeFactory typeFactory = new JavaTypeFactoryImpl(RelDataTypeSystem.DEFAULT);
+    public static final SchemaPlus defaultSchema = Frameworks.createRootSchema(true);
 
-        private FrameworkConfig config = Frameworks.newConfigBuilder().defaultSchema(defaultSchema).build();
-        private Planner planner = Frameworks.getPlanner(config);
+    private FrameworkConfig config = Frameworks.newConfigBuilder().defaultSchema(defaultSchema).build();
+    private Planner planner = Frameworks.getPlanner(config);
 
-        public EspressoParser(String schema){
-        addTableSchema(schema);
-        }
+    public EspressoParser(String schema){
+        SqlToRelConverter.configBuilder().build();
 
-        public void addTableSchema(String schema){
-            SqlToRelConverter.configBuilder().build();
-
-            // Parse json schema
-            Gson gson = new Gson();
-            Object tables = gson.fromJson(schema, Object.class);
-            System.out.println(tables);
-            Map<String, Map<String,String>> tablesMap = (Map<String, Map<String,String>>) tables;
-            for (Map.Entry<String, Map<String,String>> entry : tablesMap.entrySet()) {
-                String tableName = entry.getKey();
-                defaultSchema.add(tableName, new EMP());
-                //                System.out.println(tableName);
-                Map<String, String> tableSchema = entry.getValue();
-                System.out.println(tableSchema);
-            }
-        }
-
-        public RelNode getRelNode(String sql) throws SqlParseException, ValidationException, RelConversionException{
-            SqlNode parse = planner.parse(sql);
-            SqlToRelConverter.configBuilder().build();
-            SqlNode validate = planner.validate(parse);
-            RelNode tree = planner.rel(validate).rel;
-            return tree;
+        // Parse json schema
+        Gson gson = new Gson();
+        Object tables = gson.fromJson(schema, Object.class);
+        System.out.println(tables);
+        Map<String, Map<String,String>> tablesMap = (Map<String, Map<String,String>>) tables;
+        for (Map.Entry<String, Map<String,String>> entry : tablesMap.entrySet()) {
+            String tableName = entry.getKey();
+            defaultSchema.add(tableName, new EMP());
+            //                System.out.println(tableName);
+            Map<String, String> tableSchema = entry.getValue();
+            System.out.println(tableSchema);
         }
     }
+
+    public RelNode getRelNode(String sql) throws SqlParseException, ValidationException, RelConversionException{
+        SqlNode parse = planner.parse(sql);
+        SqlToRelConverter.configBuilder().build();
+        SqlNode validate = planner.validate(parse);
+        RelNode tree = planner.rel(validate).rel;
+        return tree;
+    }
+}

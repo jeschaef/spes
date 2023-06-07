@@ -8,10 +8,12 @@
 /Users/bl/espresso/spes/src/test/java/SimpleQueryTests/simpleExists.java
 /Users/bl/espresso/spes/src/test/java/SimpleQueryTests/SimpleAnalysis.java
 /Users/bl/espresso/spes/src/test/java/SimpleQueryTests/SimpleLeftOuterJoin.java
+/Users/bl/espresso/spes/src/test/java/SimpleQueryTests/EspressoParser.java
 /Users/bl/espresso/spes/src/test/java/SimpleQueryTests/tableSchema/EMP.java
 /Users/bl/espresso/spes/src/test/java/SimpleQueryTests/tableSchema/DEPT.java
 /Users/bl/espresso/spes/src/test/java/SimpleQueryTests/tableSchema/ACCOUNT.java
 /Users/bl/espresso/spes/src/test/java/SimpleQueryTests/simpleAgg.java
 /Users/bl/espresso/spes/src/test/java/SimpleQueryTests/JoinEqualOuterJoin.java
 /Users/bl/espresso/spes/src/test/java/SimpleQueryTests/SimpleEmptyTable.java
+/Users/bl/espresso/spes/src/test/java/SimpleQueryTests/EspressoTest.java
 /Users/bl/espresso/spes/src/test/java/SimpleQueryTests/testOftest.java

@@ -11,7 +11,6 @@ import org.apache.calcite.sql.SqlNode;
 import org.apache.calcite.sql.parser.SqlParseException;
 import org.apache.calcite.sql2rel.SqlToRelConverter;
 import org.apache.calcite.tools.*;
-import SimpleQueryTests.tableSchema.EMP;
 
 import java.lang.reflect.Type;
 
@@ -28,10 +27,6 @@ public class EspressoParser {
 
         public void addTableSchema(){
             SqlToRelConverter.configBuilder().build();
-            defaultSchema.add("EMP", new EMP());
-            defaultSchema.add("DEPT",new DEPT());
-            defaultSchema.add("BONUS",new BONUS());
-            defaultSchema.add("ACCOUNT",new ACCOUNT());
         }
 
         public RelNode getRelNode(String sql) throws SqlParseException, ValidationException, RelConversionException{

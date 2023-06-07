@@ -8,7 +8,9 @@ SimpleQueryTests/simpleTest.class
 SimpleQueryTests/simpleAgg.class
 SimpleQueryTests/SimpleAnalysis.class
 SimpleQueryTests/tableSchema/ACCOUNT.class
+SimpleQueryTests/EspressoParser.class
 SimpleQueryTests/simpleJoin.class
+SimpleQueryTests/EspressoTest.class
 SimpleQueryTests/SimpleEmptyTable.class
 SimpleQueryTests/simpleFilter.class
 SimpleQueryTests/SingleAnalysis.class

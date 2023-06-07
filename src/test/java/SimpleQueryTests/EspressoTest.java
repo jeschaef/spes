@@ -15,6 +15,10 @@ public class EspressoTest {
         String q1 = args[0];
         String q2 = args[1];
         String schema = args[2];
+        if (args.length != 3) {
+            System.out.println("Usage: EspressoTest <sql1> <sql2> <schema>");
+            System.exit(1);
+        }
         JsonObject result = verify(q1, q2, schema);
 
         // Pretty print.
@@ -30,8 +34,8 @@ public class EspressoTest {
             result.addProperty("reason","sql feature not support");
             return result;
         }
-        EspressoParser parser = new EspressoParser();
-        EspressoParser parser2 = new EspressoParser();
+        EspressoParser parser = new EspressoParser(schema);
+        EspressoParser parser2 = new EspressoParser(schema);
         RelNode logicPlan = null;
         RelNode logicPlan2 = null;
         try {

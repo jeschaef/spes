@@ -3,7 +3,7 @@ package SimpleQueryTests;
 import org.apache.calcite.plan.RelOptUtil;
 import org.apache.calcite.rel.RelNode;
 
-import com.google.gson.JsonObject;
+import com.google.gson.*;
 import com.microsoft.z3.Context;
 
 import AlgeNode.AlgeNode;
@@ -15,7 +15,11 @@ public class EspressoTest {
         String q1 = args[0];
         String q2 = args[1];
         String schema = args[2];
-        System.out.println(verify(q1, q2, schema));
+        JsonObject result = verify(q1, q2, schema);
+
+        // Pretty print.
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        System.out.println(gson.toJson(result));
     }
 
 

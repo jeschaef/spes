@@ -5,6 +5,7 @@ SimpleQueryTests/tableSchema/EMP.class
 SimpleQueryTests/tableSchema/DEPT.class
 SimpleQueryTests/simpleExists.class
 SimpleQueryTests/simpleTest.class
+SimpleQueryTests/EspressoParser$1localTable.class
 SimpleQueryTests/simpleAgg.class
 SimpleQueryTests/SimpleAnalysis.class
 SimpleQueryTests/tableSchema/ACCOUNT.class

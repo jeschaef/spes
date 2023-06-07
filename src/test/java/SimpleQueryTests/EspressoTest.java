@@ -12,64 +12,64 @@ import AlgeRule.AlgeRule;
 
 public class EspressoTest {
     public static void main(String[] args){
-      String q1 = args[0];
-      String q2 = args[1];
-      String schema = args[2];
-      System.out.println(verify(q1, q2, schema));
+        String q1 = args[0];
+        String q2 = args[1];
+        String schema = args[2];
+        System.out.println(verify(q1, q2, schema));
     }
 
 
     public static JsonObject verify(String sql1, String sql2, String schema){
-      JsonObject result = new JsonObject();
-      if((contains(sql1))|| (contains(sql2))) {
-        result.addProperty("decision","unknown");
-        result.addProperty("reason","sql feature not support");
-        return result;
-      }
-      EspressoParser parser = new EspressoParser();
-      EspressoParser parser2 = new EspressoParser();
-      RelNode logicPlan = null;
-      RelNode logicPlan2 = null;
-      try {
-        logicPlan = parser.getRelNode(sql1);
-        logicPlan2 = parser2.getRelNode(sql2);
-      }catch (Exception e){
-        result.addProperty("decision","unknown");
-        result.addProperty("reason","syntax error in sql");
-        return result;
-      }
-      AlgeNode algeExpr = null;
-      AlgeNode algeExpr2 = null;
-      try {
-        System.out.println(RelOptUtil.toString(logicPlan));
-        System.out.println(RelOptUtil.toString(logicPlan2));
-        Context z3Context = new Context();
-        algeExpr = AlgeRule.normalize(AlgeNodeParserPair.constructAlgeNode(logicPlan, z3Context));
-        algeExpr2 = AlgeRule.normalize(AlgeNodeParserPair.constructAlgeNode(logicPlan2, z3Context));
-      }catch (Exception e){
-        result.addProperty("decision","unknown");
-        result.addProperty("reason","sql feature not support");
-        return result;
-      }
-      try {
-        result.addProperty("decision", String.valueOf(algeExpr.isEq(algeExpr2)));
-        result.addProperty("plan1",RelOptUtil.toString(logicPlan));
-        result.addProperty("plan2",RelOptUtil.toString(logicPlan2));
-      }catch (Exception e){
-        result.addProperty("decision","unknown");
-        result.addProperty("reason","unknown");
-      }finally {
-        return result;
-      }
+        JsonObject result = new JsonObject();
+        if((contains(sql1))|| (contains(sql2))) {
+            result.addProperty("decision","unknown");
+            result.addProperty("reason","sql feature not support");
+            return result;
+        }
+        EspressoParser parser = new EspressoParser();
+        EspressoParser parser2 = new EspressoParser();
+        RelNode logicPlan = null;
+        RelNode logicPlan2 = null;
+        try {
+            logicPlan = parser.getRelNode(sql1);
+            logicPlan2 = parser2.getRelNode(sql2);
+        }catch (Exception e){
+            result.addProperty("decision","unknown");
+            result.addProperty("reason","syntax error in sql");
+            return result;
+        }
+        AlgeNode algeExpr = null;
+        AlgeNode algeExpr2 = null;
+        try {
+            System.out.println(RelOptUtil.toString(logicPlan));
+            System.out.println(RelOptUtil.toString(logicPlan2));
+            Context z3Context = new Context();
+            algeExpr = AlgeRule.normalize(AlgeNodeParserPair.constructAlgeNode(logicPlan, z3Context));
+            algeExpr2 = AlgeRule.normalize(AlgeNodeParserPair.constructAlgeNode(logicPlan2, z3Context));
+        }catch (Exception e){
+            result.addProperty("decision","unknown");
+            result.addProperty("reason","sql feature not support");
+            return result;
+        }
+        try {
+            result.addProperty("decision", String.valueOf(algeExpr.isEq(algeExpr2)));
+            result.addProperty("plan1",RelOptUtil.toString(logicPlan));
+            result.addProperty("plan2",RelOptUtil.toString(logicPlan2));
+        }catch (Exception e){
+            result.addProperty("decision","unknown");
+            result.addProperty("reason","unknown");
+        }finally {
+            return result;
+        }
     }
 
     static public boolean contains(String sql){
-      String[] keyWords ={"VALUE","EXISTS","ROW","ORDER","CAST","INTERSECT","EXCEPT"," IN "};
-      for (String keyWord : keyWords) {
-        if (sql.contains(keyWord)) {
-          return true;
+        String[] keyWords ={"VALUE","EXISTS","ROW","ORDER","CAST","INTERSECT","EXCEPT"," IN "};
+        for (String keyWord : keyWords) {
+            if (sql.contains(keyWord)) {
+                return true;
+            }
         }
-      }
-      return false;
+        return false;
     }
 }

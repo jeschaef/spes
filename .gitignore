@@ -23,3 +23,7 @@
 hs_err_pid*
 /.idea/
 /target/
+/bug.txt
+/calciteProve.txt
+/cannotCompile.txt
+/cannotProve.txt

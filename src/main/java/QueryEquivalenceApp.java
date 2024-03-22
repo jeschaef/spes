@@ -187,6 +187,8 @@ public class QueryEquivalenceApp {
                         .uri(URI.create("http://localhost:8080/qe?id=" + id2))
                         .GET()
                         .build();
+
+                // Send get requests until a result is obtained
                 while (true) {
                     String body = null;
                     try {
@@ -212,7 +214,7 @@ public class QueryEquivalenceApp {
             threads[i].start();
         }
 
-        // w8 for threads to finish
+        // w8 for all threads to finish
         for (Thread thread : threads) {
             thread.join();
         }

@@ -11,7 +11,6 @@ public abstract class Job<T extends JobResult> implements Callable<Job<T>> {
 
     public Job(String name) {
         this(UUID.randomUUID(), name);
-
     }
 
     public Job(UUID id, String name) {

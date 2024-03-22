@@ -1,5 +1,3 @@
-import java.util.UUID;
-
 public class QueryEquivalenceJobResult extends JobResult {
 
     private boolean isProven = false;
@@ -10,16 +8,8 @@ public class QueryEquivalenceJobResult extends JobResult {
     private String errorMessage;
 
 
-    public String getMessage() {
-        return message;
-    }
-
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public boolean isProven() {
-        return isProven;
     }
 
     public void setProven(boolean proven) {
@@ -34,16 +24,8 @@ public class QueryEquivalenceJobResult extends JobResult {
         isCompiled = compiled;
     }
 
-    public String getErrorMessage() {
-        return errorMessage;
-    }
-
     public void setErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
-    }
-
-    public long getVerificationTime() {
-        return verificationTime;
     }
 
     public void setVerificationTime(long verificationTime) {

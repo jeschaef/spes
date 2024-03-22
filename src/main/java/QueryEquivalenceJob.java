@@ -22,14 +22,6 @@ public class QueryEquivalenceJob extends Job<QueryEquivalenceJobResult> {
         this.sql2 = null;
     }
 
-    public String getSql1() {
-        return sql1;
-    }
-
-    public String getSql2() {
-        return sql2;
-    }
-
     @Override
     public QueryEquivalenceJob call() {
         this.result = new QueryEquivalenceJobResult();
@@ -48,13 +40,9 @@ public class QueryEquivalenceJob extends Job<QueryEquivalenceJobResult> {
 
             logicPlan = parser.getRelNode(sql1);
             logicPlan2 = parser2.getRelNode(sql2);
-            //System.out.println(RelOptUtil.toString(logicPlan));
-            //System.out.println(RelOptUtil.toString(logicPlan2));
             this.result.setCompiled(true);
         } catch (Exception e) {
-            System.out.println("Failed to compile " + name);
-            System.out.println("Exception: " + e);
-            result.setMessage("Failed to compile " + name);
+            result.setMessage("Failed to compile");
             result.setErrorMessage(e.toString());
             result.setCompiled(false);
         }
@@ -76,8 +64,10 @@ public class QueryEquivalenceJob extends Job<QueryEquivalenceJobResult> {
                     long stopTime = System.currentTimeMillis();
                     result.setVerificationTime(stopTime - startTime);
                     result.setProven(true);
+                    result.setMessage("Success");
                 } else {
                     result.setProven(false);
+                    result.setMessage("Could not prove equivalence");
 //                    cannotProve.println(RelOptUtil.toString(logicPlan));
 //                    cannotProve.println(RelOptUtil.toString(logicPlan2));
 //                    cannotProve.flush();
